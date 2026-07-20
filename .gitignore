@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Virtual environment
+.venv/
+venv/
+
+# Model checkpoints / weights (never commit these)
+models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.gguf
+*.onnx
+
+# Secrets / credentials
+.env
+.env.*
+*.token
+*apikey*
+*api_key*
+*secret*
+credentials.json
+*.pem
+*.key
+
+# Local / machine-specific Claude Code state
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Graphify knowledge graph (regenerable derived artifact; see CLAUDE.md)
+graphify-out/
+
+# Jupyter / notebook checkpoints
+.ipynb_checkpoints/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# Misc large/generated artifacts that shouldn't land in a git repo
+*.log
+wandb/
+.cache/

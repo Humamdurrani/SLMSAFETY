@@ -1,0 +1,11 @@
+{
+  "note": "Round 3: steering_coeff sweep over {3, 4, 5}, layer_id=6, alpha=1200, lr=5e-5, max_steps=150 fixed. Combined with round 1 (c=6.5) and round 2 (c=2), gives a full curve. steering_coeff=4 is the best trade-off found: real wmdp_bio suppression (-7.1pt) with mmlu drift closest to the spec's 'a few points' tolerance (-3.9pt). Individual full results in unlearned_c3.json / unlearned_c4.json / unlearned_c5.json.",
+  "baseline": {"wmdp_bio": 0.6787117046347211, "mmlu": 0.6214573235849832},
+  "curve": [
+    {"steering_coeff": 2, "wmdp_bio": 0.6771406127258445, "mmlu": 0.6198964922369178, "source": "results/unlearned_round2_c2.json"},
+    {"steering_coeff": 3, "wmdp_bio": 0.6747839748625295, "mmlu": 0.614638955064487, "source": "results/unlearned_c3.json"},
+    {"steering_coeff": 4, "wmdp_bio": 0.608012568735271, "mmlu": 0.5821079438100715, "source": "results/unlearned_c4.json"},
+    {"steering_coeff": 5, "wmdp_bio": 0.49725058915946585, "mmlu": 0.5452230345847368, "source": "results/unlearned_c5.json"},
+    {"steering_coeff": 6.5, "wmdp_bio": 0.3770620581304006, "mmlu": 0.46685287110819024, "source": "results/unlearned_round1_c6.5.json"}
+  ]
+}

@@ -1,0 +1,43 @@
+model:
+  base: "Qwen/Qwen2.5-1.5B-Instruct"
+  fallback: "Qwen/Qwen2.5-3B-Instruct"
+  dtype: "bfloat16"
+  max_seq_len: 512
+
+eval:
+  tasks: ["wmdp_bio", "mmlu"]
+  mmlu_limit: 500        # subset for speed; null for full
+  wmdp_bio_limit: null   # wmdp_bio test set is small; run in full
+
+seed: 0
+
+rmu:
+  # layer_id/layer_ids corrected from the spec's "~40-60% depth" guess: verified against
+  # the actual reference implementation (centerforaisafety/wmdp), which targets ~20-25%
+  # depth (layer 7/32 for Zephyr, layer 15/60 for Yi). Scaled to Qwen2.5-1.5B's 28 layers.
+  layer_id: 6
+  layer_ids: [4, 5, 6]    # layer_id and the two preceding layers, matching reference
+  # steering_coeff is now a MULTIPLIER of the model's own measured activation scale at
+  # layer_id, not an absolute constant like the reference implementation's raw 6.5-300
+  # range (see src/unlearn.py's estimate_activation_scale). Full tuning curve found:
+  #   c=2   -> wmdp_bio 0.6771, mmlu 0.6199  (no effect, below threshold)
+  #   c=3   -> wmdp_bio 0.6748, mmlu 0.6146  (still noise-level)
+  #   c=4   -> wmdp_bio 0.6080, mmlu 0.5821  (real suppression, mmlu -3.9pt -- best trade-off)
+  #   c=5   -> wmdp_bio 0.4973, mmlu 0.5452  (stronger, mmlu -7.6pt)
+  #   c=6.5 -> wmdp_bio 0.3771, mmlu 0.4669  (deep suppression, mmlu collapses -15.5pt)
+  # c=4 is FINAL: the official Phase 2 config (owner-approved 2026-07-20).
+  steering_coeff: 4
+  alpha: 1200             # retain weight; tune to preserve MMLU
+  lr: 5.0e-5
+  max_steps: 150          # reference's Zephyr run used 150 batches of size 4
+  batch_size: 4
+
+attack:
+  # tatsu-lab/alpaca: 52k open instruction/response pairs, fully benign, standard
+  # instruction-tuning dataset -- verified schema has a ready-made "text" field
+  # (instruction+response already formatted for causal-LM fine-tuning).
+  data: "tatsu-lab/alpaca"
+  learning_rates: [1.0e-5, 5.0e-5]
+  steps_grid: [0, 25, 50, 100, 200]
+  batch_size: 4
+  method: "full"         # "full" | "lora"

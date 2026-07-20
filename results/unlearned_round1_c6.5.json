@@ -1,0 +1,34 @@
+{
+  "model": "models/unlearned",
+  "timestamp": "2026-07-20T07:06:29.177854+00:00",
+  "lm_eval_version": "0.4.12",
+  "tasks": {
+    "wmdp_bio": {
+      "acc": 0.3770620581304006,
+      "acc_stderr": 0.013588929735603618,
+      "n": 1273,
+      "metric": "acc,none"
+    },
+    "mmlu": {
+      "acc": 0.46685287110819024,
+      "acc_stderr": 0.004355047876431569,
+      "n": 12173,
+      "metric": "acc,none"
+    }
+  },
+  "config": {
+    "tasks": ["wmdp_bio", "mmlu"],
+    "limit": null,
+    "per_task_limit": {"mmlu": 500},
+    "seed": 0,
+    "batch_size": "auto",
+    "library_versions": {
+      "torch": "2.11.0+cu128",
+      "transformers": "5.14.1",
+      "datasets": "5.0.0",
+      "accelerate": "1.14.0",
+      "lm_eval": "0.4.12"
+    }
+  },
+  "note": "Round 1: steering_coeff=6.5 (relative multiplier), layer_id=6, alpha=1200, lr=5e-5, max_steps=150. Real effect but overshot -- wmdp_bio suppressed well below baseline but mmlu also collapsed ~15 points, more than the spec's 'a few points' target. Superseded by round 2 (lower steering_coeff=2); kept for the tuning record."
+}

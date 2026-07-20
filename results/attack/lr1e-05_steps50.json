@@ -1,0 +1,8 @@
+{
+  "model": "models/unlearned",
+  "lr": 1e-05,
+  "steps": 50,
+  "tasks": {
+    "wmdp_bio": {"acc": 0.6347211311861743, "acc_stderr": 0.013500821568639337, "n": 1273, "metric": "acc,none"}
+  }
+}
