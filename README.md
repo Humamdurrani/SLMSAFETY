@@ -1,4 +1,4 @@
-# Does removed bio knowledge stay removed?
+![Does removed bio knowledge stay removed? RMU unlearning vs. benign fine-tuning, a tamper-resistance test.](assets/banner.svg)
 
 I took a small open-weight language model, used a published unlearning method (RMU) to
 strip out its ability to answer hazardous-biology proxy questions, and then fine-tuned it

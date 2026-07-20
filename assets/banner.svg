@@ -1,0 +1,59 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Does removed bio knowledge stay removed? RMU unlearning versus benign fine-tuning, a tamper-resistance test.">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12161C"/>
+      <stop offset="100%" stop-color="#1A2029"/>
+    </linearGradient>
+    <linearGradient id="areaFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D08C3E" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#D08C3E" stop-opacity="0"/>
+    </linearGradient>
+    <style>
+      .title { font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif; fill: #EDEAE2; }
+      .mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="300" fill="url(#bg)"/>
+
+  <!-- Left: title block -->
+  <text x="64" y="128" class="title" font-size="42">Does removed bio knowledge</text>
+  <text x="64" y="178" class="title" font-size="42">stay removed?</text>
+  <text x="64" y="213" class="mono" font-size="16" fill="#D08C3E">RMU unlearning vs. benign fine-tuning — a tamper-resistance test</text>
+  <text x="64" y="258" class="mono" font-size="12.5" fill="#6B7482" letter-spacing="0.3">Qwen2.5-1.5B-Instruct · WMDP-bio (chance 25%) · MIT licensed</text>
+
+  <!-- Divider -->
+  <line x1="712" y1="50" x2="712" y2="250" stroke="#6B7482" stroke-opacity="0.35" stroke-width="1"/>
+
+  <!-- Right: real recovery-curve sparkline (lr=5e-05) -->
+  <!-- baseline reference -->
+  <line x1="750" y1="100" x2="1130" y2="100" stroke="#6B7482" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="765" y="88" class="mono" font-size="11" fill="#6B7482">baseline 67.9%</text>
+  <text x="1120" y="68" class="mono" font-size="13" font-weight="600" fill="#D08C3E" text-anchor="end">94.5% recovered</text>
+
+  <!-- area fill under the curve -->
+  <path d="M 760 210 L 850 128 L 940 138 L 1030 118 L 1120 106 L 1120 230 L 760 230 Z" fill="url(#areaFill)"/>
+
+  <!-- the curve itself -->
+  <path d="M 760 210 L 850 128 L 940 138 L 1030 118 L 1120 106"
+        fill="none" stroke="#D08C3E" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- points -->
+  <circle cx="760" cy="210" r="5" fill="#4F8C8A" stroke="#12161C" stroke-width="1.5"/>
+  <circle cx="850" cy="128" r="4" fill="#D08C3E"/>
+  <circle cx="940" cy="138" r="4" fill="#D08C3E"/>
+  <circle cx="1030" cy="118" r="4" fill="#D08C3E"/>
+  <circle cx="1120" cy="106" r="5.5" fill="#D08C3E" stroke="#EDEAE2" stroke-width="1.5"/>
+
+  <text x="760" y="196" class="mono" font-size="12" fill="#4F8C8A" text-anchor="middle">60.8%</text>
+
+  <!-- x-axis step ticks -->
+  <text x="760" y="246" class="mono" font-size="10" fill="#6B7482" text-anchor="middle">0</text>
+  <text x="850" y="246" class="mono" font-size="10" fill="#6B7482" text-anchor="middle">25</text>
+  <text x="940" y="246" class="mono" font-size="10" fill="#6B7482" text-anchor="middle">50</text>
+  <text x="1030" y="246" class="mono" font-size="10" fill="#6B7482" text-anchor="middle">100</text>
+  <text x="1120" y="246" class="mono" font-size="10" fill="#6B7482" text-anchor="middle">200</text>
+
+  <text x="940" y="270" class="mono" font-size="12" fill="#6B7482" text-anchor="middle">WMDP-bio accuracy vs. benign fine-tuning steps</text>
+</svg>
