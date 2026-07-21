@@ -6,10 +6,6 @@
 > the central claim in Stephen Casper's tamper-resistance notes: that today's
 > post-training unlearning is not very tamper-resistant.
 
-**Audience for this file:** the coding assistant (Claude Code) doing the implementation.
-The human owner is not a professional engineer, so explain what you're doing in plain
-language as you go, and stop to check in at each phase boundary.
-
 ---
 
 ## 0. What this project is and is NOT
